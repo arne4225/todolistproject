@@ -12,56 +12,129 @@
 
     <div class="layout">
 
+        <!-- LEFT SIDEBAR -->
         <aside class="sidebar">
+            <div class="profile-card">
+                <h3>date</h3>
+                <p class="muted">22-2-2026</p>
+            </div>
             <div class="nav-block purple">➕ Add task</div>
-            <div class="nav-block blue">⚙️ Settings</div>
             <div class="nav-block red">🗑️ Delete tasks</div>
+            <div class="nav-block blue">⚙️ Settings</div>
             <div class="nav-block green">📊 Stats</div>
             <div class="nav-block orange">⏱️ Focus mode</div>
-            <div class="nav-block cyan">👤 Profile</div>
         </aside>
 
+        <!-- MAIN APP -->
         <main class="app">
+            <div class="content">
 
-            <header class="topbar">
-                <h1>todo<span>.</span></h1>
-                <button class="add-btn">+ Add task</button>
-            </header>
+                <section class="summary">
+                    <p>Today</p>
+                </section>
 
-            <section class="summary">
-                <p>Today</p>
-                <h2>3h 40m total</h2>
-            </section>
-
-            <section class="todos">
-
-                <div class="todo high">
-                    <div>
-                        <h3>Study PHP</h3>
-                        <span>90 min</span>
+                <section class="todos">
+                    <div class="todo high">
+                        <div>
+                            <h3>Study PHP</h3>
+                            <span class="due">Due today • 18:00</span>
+                        </div>
+                        <input type="checkbox">
                     </div>
-                    <input type="checkbox">
-                </div>
 
-                <div class="todo medium">
-                    <div>
-                        <h3>Go to the gym</h3>
-                        <span>60 min</span>
+                    <div class="todo medium">
+                        <div>
+                            <h3>Go to the gym</h3>
+                            <span class="due">Due today • 19:00</span>
+                        </div>
+                        <input type="checkbox">
                     </div>
-                    <input type="checkbox">
-                </div>
 
-                <div class="todo low">
-                    <div>
-                        <h3>Clean room</h3>
-                        <span>30 min</span>
+                    <div class="todo low">
+                        <div>
+                            <h3>Clean room</h3>
+                            <span class="due">Due today • 20:00</span>
+                        </div>
+                        <input type="checkbox">
                     </div>
-                    <input type="checkbox">
-                </div>
+                </section>
 
-            </section>
+                <section class="summary">
+                    <p>Tomorrow</p>
+                </section>
 
+                <section class="todos">
+                    <div class="todo high">
+                        <div>
+                            <h3>Finish project</h3>
+                            <span class="due">Due tomorrow • 17:00</span>
+                        </div>
+                        <input type="checkbox">
+                    </div>
+
+                    <div class="todo medium">
+                        <div>
+                            <h3>Buy groceries</h3>
+                            <span class="due">Due tomorrow • 18:00</span>
+                        </div>
+                        <input type="checkbox">
+                    </div>
+
+                    <div class="todo low">
+                        <div>
+                            <h3>Read a book</h3>
+                            <span class="due">Due tomorrow • 21:00</span>
+                        </div>
+                        <input type="checkbox">
+                    </div>
+                </section>
+
+                <section class="summary">
+                    <p>Tuesday</p>
+                </section>
+                <section class="todos">
+                    <div class="todo high">
+                        <div>
+                            <h3>Prepare presentation</h3>
+                            <span class="due">Due Tuesday • 16:00</span>
+                        </div>
+                        <input type="checkbox">
+                    </div>
+
+                    <div class="todo medium">
+                        <div>
+                            <h3>Call mom</h3>
+                            <span class="due">Due Tuesday • 19:00</span>
+                        </div>
+                        <input type="checkbox">
+                    </div>
+
+                    <div class="todo low">
+                        <div>
+                            <h3>Watch a movie</h3>
+                            <span class="due">Due Tuesday • 21:00</span>
+                        </div>
+                        <input type="checkbox">
+                    </div>
+
+            </div>
         </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar right">
+
+            <div class="profile-card">
+                <h3>Arne</h3>
+                <p class="muted">Logged in</p>
+            </div>
+
+            <div class="nav-block blue">⚙️ Account settings</div>
+            <div class="nav-block cyan">👤 Profile</div>
+            <div class="nav-block orange">🔐 Privacy</div>
+            <div class="nav-block purple">🎨 Theme</div>
+            <div class="nav-block red">🚪 Logout</div>
+
+        </aside>
 
     </div>
 
