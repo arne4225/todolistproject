@@ -20,7 +20,6 @@
             </div>
             <div class="nav-block purple">➕ Add task</div>
             <div class="nav-block red">🗑️ Delete tasks</div>
-            <div class="nav-block blue">⚙️ Settings</div>
             <div class="nav-block green">📊 Stats</div>
             <div class="nav-block orange">⏱️ Focus mode</div>
         </aside>
@@ -29,6 +28,7 @@
         <main class="app">
             <div class="content">
 
+                <!-- TODAY -->
                 <section class="summary">
                     <p>Today</p>
                 </section>
@@ -39,7 +39,10 @@
                             <h3>Study PHP</h3>
                             <span class="due">Due today • 18:00</span>
                         </div>
-                        <input type="checkbox">
+                        <div class="actions">
+                            <button class="btn done">Done</button>
+                            <button class="btn giveup">Give up</button>
+                        </div>
                     </div>
 
                     <div class="todo medium">
@@ -47,7 +50,10 @@
                             <h3>Go to the gym</h3>
                             <span class="due">Due today • 19:00</span>
                         </div>
-                        <input type="checkbox">
+                        <div class="actions">
+                            <button class="btn done">Done</button>
+                            <button class="btn giveup">Give up</button>
+                        </div>
                     </div>
 
                     <div class="todo low">
@@ -55,10 +61,14 @@
                             <h3>Clean room</h3>
                             <span class="due">Due today • 20:00</span>
                         </div>
-                        <input type="checkbox">
+                        <div class="actions">
+                            <button class="btn done">Done</button>
+                            <button class="btn giveup">Give up</button>
+                        </div>
                     </div>
                 </section>
 
+                <!-- TOMORROW -->
                 <section class="summary">
                     <p>Tomorrow</p>
                 </section>
@@ -69,7 +79,10 @@
                             <h3>Finish project</h3>
                             <span class="due">Due tomorrow • 17:00</span>
                         </div>
-                        <input type="checkbox">
+                        <div class="actions">
+                            <button class="btn done">Done</button>
+                            <button class="btn giveup">Give up</button>
+                        </div>
                     </div>
 
                     <div class="todo medium">
@@ -77,7 +90,10 @@
                             <h3>Buy groceries</h3>
                             <span class="due">Due tomorrow • 18:00</span>
                         </div>
-                        <input type="checkbox">
+                        <div class="actions">
+                            <button class="btn done">Done</button>
+                            <button class="btn giveup">Give up</button>
+                        </div>
                     </div>
 
                     <div class="todo low">
@@ -85,20 +101,28 @@
                             <h3>Read a book</h3>
                             <span class="due">Due tomorrow • 21:00</span>
                         </div>
-                        <input type="checkbox">
+                        <div class="actions">
+                            <button class="btn done">Done</button>
+                            <button class="btn giveup">Give up</button>
+                        </div>
                     </div>
                 </section>
 
+                <!-- TUESDAY -->
                 <section class="summary">
                     <p>Tuesday</p>
                 </section>
+
                 <section class="todos">
                     <div class="todo high">
                         <div>
                             <h3>Prepare presentation</h3>
                             <span class="due">Due Tuesday • 16:00</span>
                         </div>
-                        <input type="checkbox">
+                        <div class="actions">
+                            <button class="btn done">Done</button>
+                            <button class="btn giveup">Give up</button>
+                        </div>
                     </div>
 
                     <div class="todo medium">
@@ -106,7 +130,10 @@
                             <h3>Call mom</h3>
                             <span class="due">Due Tuesday • 19:00</span>
                         </div>
-                        <input type="checkbox">
+                        <div class="actions">
+                            <button class="btn done">Done</button>
+                            <button class="btn giveup">Give up</button>
+                        </div>
                     </div>
 
                     <div class="todo low">
@@ -114,8 +141,12 @@
                             <h3>Watch a movie</h3>
                             <span class="due">Due Tuesday • 21:00</span>
                         </div>
-                        <input type="checkbox">
+                        <div class="actions">
+                            <button class="btn done">Done</button>
+                            <button class="btn giveup">Give up</button>
+                        </div>
                     </div>
+                </section>
 
             </div>
         </main>

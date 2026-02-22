@@ -148,3 +148,33 @@ input[type="checkbox"] {
     color: var(--muted);
     font-size: 0.75rem;
 }
+
+/* TODO ACTIONS */
+.actions {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.btn {
+    border: none;
+    padding: 0.35rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.btn.done {
+    background: #2ecc71;
+}
+
+.btn.giveup {
+    background: #ff5c5c;
+}
