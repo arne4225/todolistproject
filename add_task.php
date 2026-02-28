@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require 'db.php';
 
@@ -23,6 +24,7 @@ $priority = $_POST['priority'] ?? 'medium';
 $stmt = $pdo->prepare("INSERT INTO todos (user_id, title, due_date, due_time, priority) VALUES (?, ?, ?, ?, ?)");
 $stmt->execute([$_SESSION['user_id'], $title, $due_date, $due_time, $priority]);
 
+header('Content-Type: application/json');
 echo json_encode([
     'id' => $pdo->lastInsertId(),
     'title' => $title,

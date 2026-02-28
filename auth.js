@@ -4,17 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!overlay || !loginForm) return;
 
-    // Overlay smooth verbergen
     window.hideAuthOverlay = () => {
         overlay.classList.add('hidden');
 
         setTimeout(() => {
             location.reload();
-        }, 500); // zelfde duur als CSS transition
+        }, 500);
     };
     window.hideAuthOverlay = hideAuthOverlay;
 
-    // LOGIN via AJAX (geen redirect)
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
