@@ -89,6 +89,22 @@ $todos = $stmt->fetchAll();
         </div>
     </div>
 
+    <!-- STATS OVERLAY -->
+    <div class="auth-overlay hidden" id="statsOverlay">
+        <div class="auth-modal">
+            <h2>Your stats</h2>
+
+            <canvas id="statsChart" width="300" height="300"></canvas>
+
+            <div class="divider"></div>
+
+            <button class="btn giveup" id="closeStats">
+                Close
+            </button>
+        </div>
+    </div>
+
+
     <div class="layout">
 
         <!-- LEFT SIDEBAR -->
@@ -153,9 +169,11 @@ $todos = $stmt->fetchAll();
         </aside>
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="auth.js" defer></script>
     <script src="addtask.js" defer></script>
     <script src="todo_actions.js" defer></script>
+    <script src="stats.js" defer></script>
 </body>
 
 </html>

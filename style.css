@@ -383,3 +383,7 @@ body {
     border-color: #4cd964;
 }
 
+#statsChart {
+    max-width: 100%;
+    margin: 20px auto;
+}
