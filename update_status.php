@@ -1,41 +1,68 @@
 <?php
+
+declare(strict_types=1);
+
 session_start();
 require 'db.php';
 
+header('Content-Type: application/json');
+
+// Login check
 if (!isset($_SESSION['user_id'])) {
     http_response_code(403);
-    echo json_encode(['error' => 'Not logged in']);
+    echo json_encode(['success' => false, 'error' => 'Not logged in']);
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
-$todo_id = $_POST['todo_id'] ?? null;
-$new_status = $_POST['status'] ?? null;
+$user_id = (int)$_SESSION['user_id'];
+$todo_id = isset($_POST['todo_id']) ? (int)$_POST['todo_id'] : 0;
+$status  = $_POST['status'] ?? '';
 
-if (!$todo_id || !in_array($new_status, ['done', 'giveup'])) {
+if ($todo_id <= 0 || !in_array($status, ['done', 'giveup'], true)) {
     http_response_code(400);
-    echo json_encode(['error' => 'Invalid input']);
+    echo json_encode(['success' => false, 'error' => 'Invalid input']);
     exit;
 }
-
-$pdo->beginTransaction();
 
 try {
+    $pdo->beginTransaction();
 
-    $stmt = $pdo->prepare("UPDATE todos SET status = ? WHERE id = ? AND user_id = ?");
-    $stmt->execute([$new_status, $todo_id, $user_id]);
+    // Update todo
+    $stmt = $pdo->prepare(
+        "UPDATE todos 
+         SET status = :status 
+         WHERE id = :id AND user_id = :user_id"
+    );
+    $stmt->execute([
+        ':status' => $status,
+        ':id' => $todo_id,
+        ':user_id' => $user_id
+    ]);
 
-    if ($new_status === 'done') {
-        $stmtStats = $pdo->prepare("UPDATE user_stats SET todos_done = todos_done + 1 WHERE user_id = ?");
+    // Update stats
+    if ($status === 'done') {
+        $stmtStats = $pdo->prepare(
+            "INSERT INTO user_stats (user_id, todos_done)
+             VALUES (:uid, 1)
+             ON DUPLICATE KEY UPDATE todos_done = todos_done + 1"
+        );
     } else {
-        $stmtStats = $pdo->prepare("UPDATE user_stats SET todos_giveup = todos_giveup + 1 WHERE user_id = ?");
+        $stmtStats = $pdo->prepare(
+            "INSERT INTO user_stats (user_id, todos_giveup)
+             VALUES (:uid, 1)
+             ON DUPLICATE KEY UPDATE todos_giveup = todos_giveup + 1"
+        );
     }
-    $stmtStats->execute([$user_id]);
+
+    $stmtStats->execute([':uid' => $user_id]);
 
     $pdo->commit();
+
     echo json_encode(['success' => true]);
-} catch (Exception $e) {
+    exit;
+} catch (Throwable $e) {
     $pdo->rollBack();
     http_response_code(500);
-    echo json_encode(['error' => $e->getMessage()]);
+    echo json_encode(['success' => false, 'error' => 'Server error']);
+    exit;
 }

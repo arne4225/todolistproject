@@ -16,6 +16,7 @@ $stmt = $pdo->prepare("
     SELECT *
     FROM todos
     WHERE user_id = ?
+      AND status = 'pending'
     ORDER BY due_date, due_time
 ");
 $stmt->execute([$_SESSION['user_id'] ?? 0]);
