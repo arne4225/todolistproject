@@ -62,17 +62,32 @@ $todos = $stmt->fetchAll();
     <div class="auth-overlay hidden" id="addTaskOverlay">
         <div class="auth-modal">
             <h2>Add New Task</h2>
+
             <form id="addTaskForm">
                 <input type="text" name="title" placeholder="Task title" required>
+
                 <input type="date" name="due_date" required>
+
                 <input type="time" name="due_time" required>
+
+                <!-- PRIORITY -->
+                <select name="priority" required>
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+
                 <button type="submit">Add Task</button>
             </form>
+
             <div class="divider">or</div>
-            <button type="button" class="btn giveup" id="cancelAddTask">Cancel</button>
+
+            <button type="button" class="btn giveup" id="cancelAddTask">
+                Cancel
+            </button>
         </div>
     </div>
-
+    
     <div class="layout">
 
         <!-- LEFT SIDEBAR -->
@@ -101,7 +116,7 @@ $todos = $stmt->fetchAll();
                     <?php endif; ?>
 
                     <?php foreach ($todos as $todo): ?>
-                        <div class="todo medium">
+                        <div class="todo <?= htmlspecialchars($todo['priority'] ?? 'medium') ?>">
                             <div>
                                 <h3><?= htmlspecialchars($todo['title']) ?></h3>
                                 <span class="due">

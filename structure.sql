@@ -25,3 +25,21 @@ CREATE TABLE todos (
         REFERENCES users(id)
         ON DELETE CASCADE
 );
+
+ALTER TABLE todos
+ADD COLUMN priority ENUM('low', 'medium', 'high') NOT NULL DEFAULT 'medium';
+
+CREATE TABLE user_stats (
+    user_id INT UNSIGNED PRIMARY KEY,
+
+    todos_done INT UNSIGNED NOT NULL DEFAULT 0,
+    todos_giveup INT UNSIGNED NOT NULL DEFAULT 0,
+
+    updated_at TIMESTAMP 
+        DEFAULT CURRENT_TIMESTAMP 
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (user_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE
+);

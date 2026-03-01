@@ -319,3 +319,67 @@ body {
     color: var(--muted); 
     font-size: 0.9rem; 
 }
+
+/* PRIORITY DROPDOWN */
+.auth-modal select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 10px;
+
+    background-color: #171720;
+    color: #eaeaf0;
+
+    border: 1px solid #2a2a3a;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-family: inherit;
+
+    cursor: pointer;
+    outline: none;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover */
+.auth-modal select:hover {
+    border-color: #3a3a55;
+}
+
+/* Focus */
+.auth-modal select:focus {
+    border-color: #ff5c5c;
+    box-shadow: 0 0 0 2px rgba(255, 92, 92, 0.25);
+}
+
+/* OPTIONS */
+.auth-modal select option {
+    background: #171720;
+    color: #eaeaf0;
+}
+
+/* CUSTOM ARROW */
+.auth-modal select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23eaeaf0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    padding-right: 44px;
+}
+
+.auth-modal select[data-priority="high"] {
+    border-color: #ff5c5c;
+}
+
+.auth-modal select[data-priority="medium"] {
+    border-color: #f0c36d;
+}
+
+.auth-modal select[data-priority="low"] {
+    border-color: #4cd964;
+}
+

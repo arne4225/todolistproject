@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+header('Content-Type: application/json');
+
 require 'db.php';
 
 if (!isset($_SESSION['user_id'])) {
@@ -21,14 +23,18 @@ if (!$title || !$due_date || !$due_time) {
 
 $priority = $_POST['priority'] ?? 'medium';
 
-$stmt = $pdo->prepare("INSERT INTO todos (user_id, title, due_date, due_time, priority) VALUES (?, ?, ?, ?, ?)");
-$stmt->execute([$_SESSION['user_id'], $title, $due_date, $due_time, $priority]);
+try {
+    $stmt = $pdo->prepare("INSERT INTO todos (user_id, title, due_date, due_time, priority) VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([$_SESSION['user_id'], $title, $due_date, $due_time, $priority]);
 
-header('Content-Type: application/json');
-echo json_encode([
-    'id' => $pdo->lastInsertId(),
-    'title' => $title,
-    'due_date' => $due_date,
-    'due_time' => $due_time,
-    'priority' => $priority
-]);
+    echo json_encode([
+        'id' => $pdo->lastInsertId(),
+        'title' => $title,
+        'due_date' => $due_date,
+        'due_time' => $due_time,
+        'priority' => $priority
+    ]);
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
+}
