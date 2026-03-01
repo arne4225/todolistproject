@@ -87,7 +87,7 @@ $todos = $stmt->fetchAll();
             </button>
         </div>
     </div>
-    
+
     <div class="layout">
 
         <!-- LEFT SIDEBAR -->
@@ -116,7 +116,7 @@ $todos = $stmt->fetchAll();
                     <?php endif; ?>
 
                     <?php foreach ($todos as $todo): ?>
-                        <div class="todo <?= htmlspecialchars($todo['priority'] ?? 'medium') ?>">
+                        <div class="todo <?= htmlspecialchars($todo['priority'] ?? 'medium') ?>" data-id="<?= $todo['id'] ?>">
                             <div>
                                 <h3><?= htmlspecialchars($todo['title']) ?></h3>
                                 <span class="due">
@@ -154,6 +154,7 @@ $todos = $stmt->fetchAll();
     </div>
     <script src="auth.js" defer></script>
     <script src="addtask.js" defer></script>
+    <script src="todo_actions.js" defer></script>
 </body>
 
 </html>
